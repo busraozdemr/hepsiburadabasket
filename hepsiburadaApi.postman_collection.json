@@ -1,0 +1,244 @@
+{
+	"info": {
+		"_postman_id": "b23d5181-ff71-44b6-80d9-46999e2a26bf",
+		"name": "hepsiburadaApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/allGrocery",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2763b217-bc55-4af1-a70f-436d4b79f7de",
+						"exec": [
+							"pm.test(\"Status code is 200\", function() {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"var content = JSON.parse(responseBody);",
+							"tests[\"id is not null:\"] = content.data[0].id !== null",
+							"",
+							"",
+							"tests[\"name type is\"] = typeof(content.data[0].name) === \"string\"",
+							"",
+							"",
+							"tests[\"price is:\"] = content.data[0].stock === 100;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://02917d56-9956-4c0b-8b66-3f88c6641356.mock.pstmn.io/allGrocery",
+					"protocol": "https",
+					"host": [
+						"02917d56-9956-4c0b-8b66-3f88c6641356",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"allGrocery"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}//allGrocery",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"",
+								"allGrocery"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n\"data\": [\n\n{\n\"id\": 1,\n\"name\": \"apple\",\n\"price\": 3,\n\"stock\": 100\n},\n{\n\"id\": 2,\n\"name\": \"grapes\",\n\"price\": 5,\n\"stock\": 50\n}\n]\n}"
+				}
+			]
+		},
+		{
+			"name": "/allGrocery/apple",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3e64d2ba-fb05-4f55-b2a8-781465eab89a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function() {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"var content = JSON.parse(responseBody);",
+							"tests[\"id is not null:\"] = content.data[0].id !== null",
+							"",
+							"",
+							"tests[\"name type is\"] = typeof(content.data[0].name) === \"string\"",
+							"tests[\"price type is\"] = typeof(content.data[0].price) === \"number\"",
+							"",
+							"",
+							"tests[\"stock is:\"] = content.data[0].stock === 100;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://02917d56-9956-4c0b-8b66-3f88c6641356.mock.pstmn.io/allGrocery/apple",
+					"protocol": "https",
+					"host": [
+						"02917d56-9956-4c0b-8b66-3f88c6641356",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"allGrocery",
+						"apple"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}//allGrocery/apple",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"",
+								"allGrocery",
+								"apple"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n\"data\": [\n{\n\"id\": 1,\n\"name\": \"apple\",\n\"price\": 3,\n\"stock\": 100\n}\n]\n}"
+				}
+			]
+		},
+		{
+			"name": "/add",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a5c2a10c-ee99-451a-bdc6-d9e879e1602c",
+						"exec": [
+							"var content = JSON.parse(responseBody);",
+							"var result = true;",
+							"if (content.id !== null &&",
+							"    content.name !== null &&",
+							"    content.price !== null &&",
+							"    content.stock !== null ) {",
+							"    result = true;",
+							"} else {",
+							"    result = false;",
+							"}",
+							"tests[\"test result is:\"] = result === true;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://02917d56-9956-4c0b-8b66-3f88c6641356.mock.pstmn.io/add",
+					"protocol": "https",
+					"host": [
+						"02917d56-9956-4c0b-8b66-3f88c6641356",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"add"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}//add",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"",
+								"add"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n\"id\": 4,\n\"name\": \"string\",\n\"price\": 12.3,\n\"stock\": 3\n}"
+				}
+			]
+		}
+	]
+}
